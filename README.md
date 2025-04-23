@@ -71,7 +71,7 @@ docker run \
     -v ~/.jaxl:/jaxl/.jaxl \
     -v ~/.proxy:/jaxl/.proxy \
     -v ${PWD}:/jaxl/ivr \
-    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v26 login
+    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v27 login
 ```
 
 ### Run the IVR locally
@@ -86,7 +86,7 @@ docker run \
     -v ~/.jaxl:/jaxl/.jaxl \
     -v ~/.proxy:/jaxl/.proxy \
     -v ${PWD}:/jaxl/ivr \
-    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v26 run \
+    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v27 run \
     confirmation
 
 2025-04-23 09:53:10,022 - grout - Logged in as <grout-account-email-id>
@@ -108,9 +108,11 @@ docker run \
     -v ~/.jaxl:/jaxl/.jaxl \
     -v ~/.proxy:/jaxl/.proxy \
     -v ${PWD}:/jaxl/ivr \
-    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v26 call \
+    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v27 call \
     --from-number <+91XXXXXXXXXX> \
     --to-number <+91YYYYYYYYYY>
+
+Call#76213 placed from +91XXXXXXXXXX to +91YYYYYYYYYY
 ```
 
 1. `--from-number` is the phone number purchased from [Jaxl Business Phone](https://business.jaxl.com) application
