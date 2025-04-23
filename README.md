@@ -4,6 +4,27 @@ Automate post-order confirmation calls with dynamic, programmable IVRs.
 
 This is a reference implementation demonstrating how to build a custom outgoing IVR flow using [jaxl-ivr-simulator](https://github.com/jaxl-innovations-private-limited/jaxl-ivr-simulator). It simulates automated calls made to customers right after they place an order — either via your website or mobile app — allowing them to confirm or cancel with a single key press.
 
+## 📚 Table of Contents
+
+- [📦 Use Case](#-use-case)
+- [🧠 How It Works](#-how-it-works)
+- [🛠️ Features](#️-features)
+- [🚀 Getting Started](#-getting-started)
+  - [Pre-requisites](#pre-requisites)
+  - [Configure `confirmation.json`](#configure-confirmationjson)
+  - [Authenticate your IVR application](#authenticate-your-ivr-application)
+  - [Run the IVR locally](#run-the-ivr-locally)
+- [📞 Making Test Calls](#-making-test-calls)
+- [✏️ Customization](#️-customization)
+  - [Fetch Customer Data Dynamically](#fetch-customer-data-dynamically)
+  - [Customize Prompts](#customize-prompts)
+- [🧠 Integrate with AI/LLMs](#-integrate-with-aillms)
+  - [⛴️ Requirement](#️-requirement)
+  - [🎧 Access Raw Audio](#-access-raw-audio)
+  - [🧠 Enable LLM-Driven Conversations](#-enable-llm-driven-conversations)
+  - [📝 Get Real-Time Transcriptions](#-get-real-time-transcriptions)
+- [💬 Need Help?](#-need-help)
+
 ## 📦 Use Case
 
 - 🔁 **Automated**: Send confirmation calls immediately after checkout.
@@ -161,6 +182,12 @@ def _get_greeting(
 ## 🧠 Integrate with AI/LLMs
 
 Want to build a truly conversational IVR that leverages real-time speech, transcription, and AI-generated responses? `jaxl-ivr-simulator` makes it easy with a few opt-in flags and plugin hooks:
+
+### ⛴️ Requirement
+
+You MUST use `realtime` variant of Docker image available. See [Docker Image Tags](https://github.com/jaxl-innovations-private-limited/jaxl-ivr-simulator?tab=readme-ov-file#docker-image-tags) for more information.
+
+TL;DR -- Use `:v27r` instead of `v27` when using the flags below.
 
 ### 🎧 Access Raw Audio
 
