@@ -93,7 +93,7 @@ docker run \
 2025-04-23 09:53:13,785 - setup - Grouting https://<uuid>.jaxl.io
 [🍀] Logged in as <jaxl-business-phone-account-email-id>
 [confirmation] [1139] created IVR "https://<uuid.jaxl.io/webhook/"
-[📲] +918069459443 is now using IVR#1139
+[📲] +91XXXXXXXXXX is now using IVR#1139
 ```
 
 > Above, application instance IVR ID is 1139.
