@@ -92,7 +92,7 @@ docker run \
 2025-04-23 09:53:10,022 - grout - Logged in as <grout-account-email-id>
 2025-04-23 09:53:13,785 - setup - Grouting https://<uuid>.jaxl.io
 [🍀] Logged in as <jaxl-business-phone-account-email-id>
-[confirmation] [1139] created IVR "https://<uuid.jaxl.io/webhook/"
+[confirmation] [1139] created IVR "https://<uuid>.jaxl.io/webhook/"
 [📲] +91XXXXXXXXXX is now using IVR#1139
 ```
 
