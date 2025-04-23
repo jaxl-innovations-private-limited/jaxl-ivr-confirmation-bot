@@ -71,7 +71,7 @@ docker run \
     -v ~/.jaxl:/jaxl/.jaxl \
     -v ~/.proxy:/jaxl/.proxy \
     -v ${PWD}:/jaxl/ivr \
-    jaxlinnovationsprivatelimited/jaxl-ivr-simulator login
+    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v26 login
 ```
 
 ### Run the IVR locally
@@ -86,7 +86,7 @@ docker run \
     -v ~/.jaxl:/jaxl/.jaxl \
     -v ~/.proxy:/jaxl/.proxy \
     -v ${PWD}:/jaxl/ivr \
-    jaxlinnovationsprivatelimited/jaxl-ivr-simulator run \
+    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v26 run \
     confirmation
 
 2025-04-23 09:53:10,022 - grout - Logged in as <grout-account-email-id>
@@ -96,7 +96,7 @@ docker run \
 [📲] +918069459443 is now using IVR#1139
 ```
 
-> Note the printed IVR ID, example `1139` is our IVR ID.
+> Above, application instance IVR ID is 1139.
 
 ## 📞 Making Test Calls
 
@@ -108,15 +108,13 @@ docker run \
     -v ~/.jaxl:/jaxl/.jaxl \
     -v ~/.proxy:/jaxl/.proxy \
     -v ${PWD}:/jaxl/ivr \
-    jaxlinnovationsprivatelimited/jaxl-ivr-simulator call \
+    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v26 call \
     --from-number <+91XXXXXXXXXX> \
-    --to-number <+91YYYYYYYYYY> \
-    --ivr-id <NNN>
+    --to-number <+91YYYYYYYYYY>
 ```
 
 1. `--from-number` is the phone number purchased from [Jaxl Business Phone](https://business.jaxl.com) application
 2. `--to-number` is target customer phone number
-3. `--ivr-id` is the IVR ID obtained from [Run the IVR locally](#run-the-ivr-locally) step
 
 ## ✏️ Customization
 
