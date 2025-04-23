@@ -35,10 +35,8 @@ This is a reference implementation demonstrating how to build a custom outgoing 
 ### Pre-requisites
 
 - Docker installed
-- A phone number active on your [Jaxl Business Phone](https://business.jaxl.com) account
-- Access to `jaxl-api-credentials.json` file
-  - `Jaxl Developer Platform` is current in invite-only mode
-  - Please fill up this [Early Access Form](https://forms.gle/veuBL4Bmz54Vp8xa9) to receive a credentials file
+- An active Indian phone number on your [Jaxl Business Phone](https://business.jaxl.com) account
+- Access to `jaxl-api-credentials.json` file. `Jaxl Developer Platform` is current under invite-only mode. Please fill up the [Early Access Form](https://forms.gle/veuBL4Bmz54Vp8xa9) to receive the credentials file over email
 
 ### Configure `confirmation.json`
 
