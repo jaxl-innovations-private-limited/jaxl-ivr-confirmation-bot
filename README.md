@@ -23,6 +23,7 @@ This is a reference implementation demonstrating how to build a custom outgoing 
   - [🎧 Access Raw Audio](#-access-raw-audio)
   - [🧠 Enable LLM-Driven Conversations](#-enable-llm-driven-conversations)
   - [📝 Get Real-Time Transcriptions](#-get-real-time-transcriptions)
+  - [🗒️ Notes on Using async and sync Callbacks Together](#️-notes-on-using-async-and-sync-callbacks-together)
 - [💬 Need Help?](#-need-help)
 
 ## 📦 Use Case
@@ -187,7 +188,7 @@ Want to build a truly conversational IVR that leverages real-time speech, transc
 
 You MUST use `realtime` variant of Docker image available. See [Docker Image Tags](https://github.com/jaxl-innovations-private-limited/jaxl-ivr-simulator?tab=readme-ov-file#docker-image-tags) for more information.
 
-TL;DR -- Use `:v28r` instead of `v28` when using the flags below.
+> Use `:v28r` instead of `v28` when using the flags below.
 
 ### 🎧 Access Raw Audio
 
@@ -238,6 +239,22 @@ For speech-to-text (STT) integration:
 This gives you structured access to transcribed speech segments during the call — ideal for building bots that listen, understand, and respond in real-time.
 
 By combining `--stream`, `--transcribe`, and `--conversational`, you can build end-to-end conversational AI bots using your favorite models, frameworks, or pipelines — all powered by [Jaxl](https://jaxl.com).
+
+### 🗒️ Notes on Using async and sync Callbacks Together
+
+> This behavior will be streamlined in future versions.
+
+When building your IVR plugin, you’ll need to implement both sync and async callbacks. It's important to note that these are executed in separate runtime contexts:
+
+- sync callbacks are triggered via the HTTP service.
+- async callbacks are triggered via the WebSocket service.
+
+Because of this separation, any local state (e.g., instance variables) set within a sync method will not be accessible inside async methods — and vice versa. To share state between sync and async contexts, consider one of the following:
+
+- Use shared memory primitives from Python's multiprocessing module, like Value, Array, or Manager.
+- Use an external store such as Redis to maintain shared state.
+
+This pattern will allow consistent state management across both execution flows until a unified model is introduced.
 
 ## 💬 Need Help?
 
