@@ -23,7 +23,9 @@ This is a reference implementation demonstrating how to build a custom outgoing 
   - [🎧 Access Raw Audio](#-access-raw-audio)
   - [🧠 Enable LLM-Driven Conversations](#-enable-llm-driven-conversations)
   - [📝 Get Real-Time Transcriptions](#-get-real-time-transcriptions)
-  - [🗒️ Notes on Using async and sync Callbacks Together](#️-notes-on-using-async-and-sync-callbacks-together)
+- [🗒️ Notes](#️-notes)
+  - [Using async and sync Callbacks Together](#using-async-and-sync-callbacks-together)
+  - [Using Python Packages](#using-python-packages)
 - [💬 Need Help?](#-need-help)
 
 ## 📦 Use Case
@@ -93,7 +95,7 @@ docker run \
     -v ~/.jaxl:/jaxlivrsimulator/.jaxl \
     -v ~/.proxy:/jaxlivrsimulator/.proxy \
     -v ${PWD}:/jaxlivrsimulator/ivr \
-    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v28 login
+    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v29 login
 ```
 
 ### Run the IVR locally
@@ -108,7 +110,7 @@ docker run \
     -v ~/.jaxl:/jaxlivrsimulator/.jaxl \
     -v ~/.proxy:/jaxlivrsimulator/.proxy \
     -v ${PWD}:/jaxlivrsimulator/ivr \
-    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v28 run \
+    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v29 run \
     confirmation
 
 2025-04-23 09:53:10,022 - grout - Logged in as <grout-account-email-id>
@@ -130,7 +132,7 @@ docker run \
     -v ~/.jaxl:/jaxlivrsimulator/.jaxl \
     -v ~/.proxy:/jaxlivrsimulator/.proxy \
     -v ${PWD}:/jaxlivrsimulator/ivr \
-    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v28 call \
+    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v29 call \
     --from-number <+91XXXXXXXXXX> \
     --to-number <+91YYYYYYYYYY>
 
@@ -188,7 +190,7 @@ Want to build a truly conversational IVR that leverages real-time speech, transc
 
 You MUST use `realtime` variant of Docker image available. See [Docker Image Tags](https://github.com/jaxl-innovations-private-limited/jaxl-ivr-simulator?tab=readme-ov-file#docker-image-tags) for more information.
 
-> Use `:v28r` instead of `v28` when using the flags below.
+> Use `:v29r` instead of `v29` when using the flags below.
 
 ### 🎧 Access Raw Audio
 
@@ -240,7 +242,9 @@ This gives you structured access to transcribed speech segments during the call 
 
 By combining `--stream`, `--transcribe`, and `--conversational`, you can build end-to-end conversational AI bots using your favorite models, frameworks, or pipelines — all powered by [Jaxl](https://jaxl.com).
 
-### 🗒️ Notes on Using async and sync Callbacks Together
+## 🗒️ Notes
+
+### Using async and sync Callbacks Together
 
 > This behavior will be streamlined in future versions.
 
@@ -255,6 +259,12 @@ Because of this separation, any local state (e.g., instance variables) set withi
 - Use an external store such as Redis to maintain shared state.
 
 This pattern will allow consistent state management across both execution flows until a unified model is introduced.
+
+### Using Python Packages
+
+To include external Python packages in your IVR application, simply list them in the `requirements.txt` file. The Jaxl IVR Simulator automatically installs these dependencies at startup, ensuring they're available at runtime.
+
+Alternatively, if you need more control, you can build a custom Docker image using the Jaxl IVR Simulator as the base. This allows you to pre-install packages, set environment variables, or add additional configuration layers to suit your needs.
 
 ## 💬 Need Help?
 
