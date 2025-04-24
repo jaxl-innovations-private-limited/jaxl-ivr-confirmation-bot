@@ -89,10 +89,10 @@ Login with your [Jaxl Business Phone](https://business.jaxl.com) Email ID:
 ```bash
 docker run \
     -it --rm \
-    -v ~/.jaxl:/jaxl/.jaxl \
-    -v ~/.proxy:/jaxl/.proxy \
-    -v ${PWD}:/jaxl/ivr \
-    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v27 login
+    -v ~/.jaxl:/jaxlivrsimulator/.jaxl \
+    -v ~/.proxy:/jaxlivrsimulator/.proxy \
+    -v ${PWD}:/jaxlivrsimulator/ivr \
+    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v28 login
 ```
 
 ### Run the IVR locally
@@ -104,10 +104,10 @@ Start the IVR application.
 ```bash
 docker run \
     -it --rm \
-    -v ~/.jaxl:/jaxl/.jaxl \
-    -v ~/.proxy:/jaxl/.proxy \
-    -v ${PWD}:/jaxl/ivr \
-    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v27 run \
+    -v ~/.jaxl:/jaxlivrsimulator/.jaxl \
+    -v ~/.proxy:/jaxlivrsimulator/.proxy \
+    -v ${PWD}:/jaxlivrsimulator/ivr \
+    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v28 run \
     confirmation
 
 2025-04-23 09:53:10,022 - grout - Logged in as <grout-account-email-id>
@@ -126,10 +126,10 @@ To trigger an outgoing call run following command:
 ```bash
 docker run \
     -it --rm \
-    -v ~/.jaxl:/jaxl/.jaxl \
-    -v ~/.proxy:/jaxl/.proxy \
-    -v ${PWD}:/jaxl/ivr \
-    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v27 call \
+    -v ~/.jaxl:/jaxlivrsimulator/.jaxl \
+    -v ~/.proxy:/jaxlivrsimulator/.proxy \
+    -v ${PWD}:/jaxlivrsimulator/ivr \
+    jaxlinnovationsprivatelimited/jaxl-ivr-simulator:v28 call \
     --from-number <+91XXXXXXXXXX> \
     --to-number <+91YYYYYYYYYY>
 
@@ -187,7 +187,7 @@ Want to build a truly conversational IVR that leverages real-time speech, transc
 
 You MUST use `realtime` variant of Docker image available. See [Docker Image Tags](https://github.com/jaxl-innovations-private-limited/jaxl-ivr-simulator?tab=readme-ov-file#docker-image-tags) for more information.
 
-TL;DR -- Use `:v27r` instead of `v27` when using the flags below.
+TL;DR -- Use `:v28r` instead of `v28` when using the flags below.
 
 ### 🎧 Access Raw Audio
 
