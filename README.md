@@ -1,4 +1,4 @@
-# Jaxl IVR Confirmation Bot
+# Jaxl IVR: Confirmation Bot
 
 Automate post-order confirmation calls with dynamic, programmable IVRs.
 
