@@ -66,6 +66,17 @@ class JaxlIVRConfirmationWebhook(BaseJaxlIVRWebhook):
 
     def __init__(self):
         super().__init__()
+
+        # NOTE: These variables are only accessible within sync methods i.e.
+        # config, setup, teardown, handle_option, stream
+        #
+        # NOTE: These variables are NOT accessible within async methods like
+        # handle_raw_audio, on_transcription.
+        #
+        # NOTE: For async equivalent of __init__, implement on_init callback.
+        #
+        # NOTE: You can re-use these variables across your sync and async callbacks
+        # but they are only available in the context they were set in.
         self._confirmed = False
         self._state: Optional[JaxlIVRState] = None
         self._ctx: Optional[CustomerContext] = None
@@ -79,7 +90,7 @@ class JaxlIVRConfirmationWebhook(BaseJaxlIVRWebhook):
         self._state = request["state"]
         assert self._state
 
-        # NOTE: Use to_number for outgoing calls, use from_number for incoming calls
+        # NOTE: Use "to_number" for outgoing calls, use "from_number" for incoming calls
         self._ctx = _get_customer_context(self._state["to_number"])
 
         return JaxlIVRResponse(
@@ -101,7 +112,7 @@ class JaxlIVRConfirmationWebhook(BaseJaxlIVRWebhook):
                 stream=None,
             )
 
-        # Option 2 == Customer confirmed the order
+        # Option 9 == Customer confirmed the order
         if request["option"] == "9":
             # NOTE: Sync confirmation state in db before replying
             self._confirmed = True
@@ -129,3 +140,50 @@ class JaxlIVRConfirmationWebhook(BaseJaxlIVRWebhook):
         sstate: Any,
     ) -> Optional[Tuple[Any, JaxlIVRResponse]]:
         raise NotImplementedError()
+
+    # Uncomment async methods below and start your IVR using
+    # "--stream" flag.
+    #
+    # async def on_init(self, state: JaxlIVRState) -> None:
+    #     self._state = state
+    #
+    # async def handle_raw_audio(
+    #     self,
+    #     call_id: int,
+    #     ivr_id: int,
+    #     chunk_id: int,
+    #     audio: bytes,
+    # ) -> None:
+    #     print(
+    #         f"Received {len(audio)} bytes for call#{call_id} on ivr#{ivr_id} "
+    #         + f"with state#{self._state}"
+    #     )
+
+    # Uncomment async methods below and start your IVR using
+    # "--transcribe" flag.
+    #
+    # NOTE: To turn this IVR app into a conversational bot, also use the
+    # "--conversational" flag.
+    #
+    # async def on_transcription(
+    #     self,
+    #     call_id: int,
+    #     ivr_id: int,
+    #     chunk_id: int,
+    #     duration: float,
+    #     transcription: str,
+    # ) -> Optional[JaxlIVRResponse]:
+    #     print(transcription)
+    #     # # If you are running in --conversational mode, its mandatory to return a response
+    #     # # If you are NOT using --conversational flag, then you must return None to avoid
+    #     # # overlapping system speech with IVR flow.
+    #     # #
+    #     # # Echo back the transcription back to the user
+    #     # return JaxlIVRResponse(
+    #     #     prompt=[transcription],
+    #     #     # num_characters=1 ensures call is not dropped, passing 0 will drop the call.
+    #     #     num_characters=1,
+    #     #     stream=None,
+    #     # )
+    #     # # Uncomment below line if NOT using --conversational
+    #     return None
